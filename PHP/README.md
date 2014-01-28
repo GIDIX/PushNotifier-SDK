@@ -20,7 +20,9 @@
 
 To log in a user simpley create an object of `PushNotifier` passing in the username and the apiKey of the user. If you already have the user's appToken you can ignore the apiKey-paramter and use the appToken:
 
-	$pushNotifier = new PushNotifier('username', 'password');
+```php
+$pushNotifier = new PushNotifier('username', 'password');
+```
 
 **Note that this call can throw a ´LoginFailedException` if the login failed**
 
@@ -28,7 +30,9 @@ To log in a user simpley create an object of `PushNotifier` passing in the usern
 
 To send push notifications you need know about the user's devices. You can fetch a list of all available devices this way:
 
-	$devices = $pushNotifier->getDevices();
+```php
+$devices = $pushNotifier->getDevices();
+```
 
 This will give you an array containing objects of `Device`.
 
@@ -42,8 +46,10 @@ This will give you an array containing objects of `Device`.
 
 Finally the fun part - pushing content to a user's device/s:
 
-	$devices = array(...); // Array of devices
-	$pushNotifier->sendToDevice('Example of a push notification.', PushNotifier::TYPE_MESSAGE, $devices);
+```php
+$devices = array(...); // Array of devices
+$pushNotifier->sendToDevice('Example of a push notification.', PushNotifier::TYPE_MESSAGE, $devices);
+```
 	
 **Note that this call can throw a `PushFailedException` if the push was not successful (for at least 1 device). When an exception is thrown the execution of further pushes is halted.**
 
