@@ -20,9 +20,7 @@
 
 To log in a user simpley create an object of `PushNotifier` passing in the username and the apiKey of the user. If you already have the user's appToken you can ignore the apiKey-paramter and use the appToken:
 
-`
-$pushNotifier = new PushNotifier('username', 'password');
-`
+	$pushNotifier = new PushNotifier('username', 'password');
 
 **Note that this call can throw a ´LoginFailedException` if the login failed**
 
@@ -30,7 +28,7 @@ $pushNotifier = new PushNotifier('username', 'password');
 
 To send push notifications you need know about the user's devices. You can fetch a list of all available devices this way:
 
-`$devices = $pushNotifier->getDevices();`
+	$devices = $pushNotifier->getDevices();
 
 This will give you an array containing objects of `Device`.
 
