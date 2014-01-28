@@ -16,7 +16,7 @@ You probably are a customer looking for PushNotifier. To download PushNotifier h
 
 Simply clone this repository and copy the folder for the language you need. Inside each folder there is a separate readme that shows you how to use it.
 
-** Important: ** You need an API Token and a registered application on GIDIX for this to work. More info in the [API Documentation](http://a.gidix.de/).
+**Important:** You need an API Token and a registered application on GIDIX for this to work. More info in the [API Documentation](http://a.gidix.de/).
 
 ## Can I contribute?
 
