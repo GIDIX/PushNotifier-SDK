@@ -47,7 +47,7 @@ Finally the fun part - pushing content to a user's device/s:
 
 ```java
 Device[] devices = new Device[] { ... };
-pn.sendToDevice('Example', PushNotifier.TYPE_MESSAGE, devices);
+pn.sendToDevice("Example", PushNotifier.TYPE_MESSAGE, devices);
 ```
 	
 ## Tracing errors
