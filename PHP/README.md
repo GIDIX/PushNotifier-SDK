@@ -18,7 +18,7 @@
 
 ## Logging in
 
-To log in a user simpley create an object of `PushNotifier` passing in the username and the apiKey of the user. If you already have the user's appToken you can ignore the apiKey-paramter and use the appToken:
+To log in a user simply create an object of `PushNotifier` passing in the username and the apiKey of the user. If you already have the user's appToken you can ignore the apiKey-paramter and use the appToken:
 
 ```php
 $pushNotifier = new PushNotifier('username', 'password');
