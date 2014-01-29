@@ -67,3 +67,6 @@ You can also call this method to get the output of every API call:
 ```java
 pn.setDebugging(true);
 ```
+
+## Credits
+* JSON by [Google Gson](https://code.google.com/p/google-gson/)
