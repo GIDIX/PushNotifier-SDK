@@ -20,7 +20,7 @@ You can either clone this repository and view the docs locally or you can [view 
 To log in a user simply create an object of `PushNotifier` via one of these methods:
 
 ```java
-PushNotifier pn = PushNotifier.instanceByCredentials("username, "apiKey/password");
+PushNotifier pn = PushNotifier.instanceByCredentials("username", "apiKey/password");
 ```
 
 or
