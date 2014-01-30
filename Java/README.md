@@ -6,6 +6,8 @@
 2. Copy the jar-File into your project's `lib`-folder (create it if it doesn't exist).
 3. Add the jar-File to your Build Path.
 4. Import these packages:
+	- com.gidix.pushNotifier.*
+	- com.gidix.pushNotifier.exceptions.*
 
 ## Notes
 
