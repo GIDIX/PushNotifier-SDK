@@ -6,7 +6,7 @@ With the PushNotifier SDK you can use PushNotifier in your applications. Current
 
 - PHP
 - Java
-- C++ (soon)
+- C++
 
 ## I don't understand anything here.
 
