@@ -4,7 +4,7 @@
 
 1. Copy the folder into your project.
 2. Modify `API_TOKEN` and `APP_PACKAGE` in `pushnotifier.h`.
-3. Compile it using `./configure` and `make`
+3. Compile it using `make`
 4. Include `pushnotifier.h` and link `pushnotifier.a`.
 5. You're ready to go.
 
@@ -30,7 +30,7 @@ PushNotifier yourInstanz("username", "password");
 To send push notifications you need know about the user's devices. You can fetch a list of all available devices this way:
 
 ```cpp
-std::vector<PushNotifier::device> deviceList getDevices();
+std::vector<PushNotifier::device> deviceList yourInstance.getDevices();
 ```
 
 This will give you a vector of the type device containing all devices.
@@ -47,7 +47,7 @@ Finally the fun part - pushing content to a user's device/s:
 
 ```cpp
 unsigned int myDevice = 17; // ID of the device
-yourInstanz.sendToDevice('Example of a push notification.', PushNotifier::TYPE_MESSAGE, myDevice);
+yourInstance.sendToDevice("Example of a push notification.", PushNotifier::TYPE_MESSAGE, myDevice);
 ```
 	
 **Note that this call can throw a `PushFailedException` if the push was not successful.**
