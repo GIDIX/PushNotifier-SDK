@@ -20,7 +20,7 @@
 To log in a user simply create an object of `PushNotifier` passing in the username and the apiKey of the user. If you already have the user's appToken you can ignore the apiKey-paramter and use the appToken:
 
 ```cpp
-PushNotifier yourInstanz("username", "password");
+PushNotifier yourInstance("username", "password");
 ```
 
 **Note that this call can throw a ´LoginFailedException` if the login failed**
