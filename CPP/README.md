@@ -23,14 +23,14 @@ To log in a user simply create an object of `PushNotifier` passing in the userna
 PushNotifier yourInstance("username", "password");
 ```
 
-**Note that this call can throw a ´LoginFailedException` if the login failed**
+**Note that this call can throw a `LoginFailedException` if the login failed**
 
 ## Retrieving devices
 
-To send push notifications you need know about the user's devices. You can fetch a list of all available devices this way:
+To send push notifications you need to know about the user's devices. You can fetch a list of all available devices this way:
 
 ```cpp
-std::vector<PushNotifier::device> deviceList yourInstance.getDevices();
+std::vector<PushNotifier::device> deviceList = yourInstance.getDevices();
 ```
 
 This will give you a vector of the type device containing all devices.
