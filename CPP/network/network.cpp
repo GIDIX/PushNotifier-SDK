@@ -71,31 +71,12 @@ string Network::receive()
 	int iReadBytes = 0;
 	string strIn;
 
-/**
-	do
-	{
-		iReadBytes = recv(sock, buffer, sizeof(buffer), MSG_NOSIGNAL); //signals abgeschaltet
-		
-		cout << iReadBytes << endl;
-
-		if(iReadBytes > 0)
-		{
-			for(int i = 0; i<=iReadBytes; i++)
-			{
-				strIn += buffer[i-1];
-			}
-		}
-	} while( iReadBytes > 0);
-**/
-
-
 	while(true)
 	{
 		iReadBytes = recv(sock, buffer, sizeof(buffer), MSG_NOSIGNAL);
 
 		if(!iReadBytes > 0)
 		{
-//			cout << "zero" << endl;
 			break;
 		}
 		else
