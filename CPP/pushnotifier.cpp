@@ -53,42 +53,43 @@ PushNotifier::PushNotifier(string username, string password)
 				i++;
 				antwortCode = input.substr(tokens[i].start, tokens[i].end-tokens[i].start);
 			}
-			else if(antwortStatus != "ok" && !antwortCode.empty())
-			{
-				int aCode;
-				istringstream ss(antwortCode);
-				ss >> aCode;
-
-				if(antwortStatus == "wrongCredentials") { throw LoginFailedException(antwortStatus, aCode); }
-
-				switch(aCode)
-				{
-				case INVALID_API_TOKEN:
-				case APP_TOKEN_MISSING:
-				case APP_TOKEN_UNKNOWN: 
-					throw InvalidTokenException(antwortStatus, aCode);
-				break;
-				case LIMIT_EXCEEDED:
-					throw LimitExceededException(antwortStatus, aCode);
-				break;
-				case APP_IDENTIFIER_MISSING:
-				case APP_INVALID:
-				case APP_PIRATING:
-				case DEVICE_ID_MISSING:
-				case DEVICE_NOT_FOUND:
-				case INVALID_TYPE:
-				case PUSH_INVALID_URL:
-					throw PushFailedException(antwortStatus, aCode);
-				break;	
-				default: 
-					throw UnexpectedValueException(antwortStatus, aCode);
-				};
-			}
 			else if(thisString == "appToken")
 			{
 				i++;
 				this->token = input.substr(tokens[i].start, tokens[i].end-tokens[i].start);
 			}
+		}
+
+		if(antwortStatus != "ok" && !antwortCode.empty())
+		{
+			int aCode;
+			istringstream ss(antwortCode);
+			ss >> aCode;
+
+			if(antwortStatus == "wrongCredentials") { throw LoginFailedException(antwortStatus, aCode); }
+
+			switch(aCode)
+			{
+			case INVALID_API_TOKEN:
+			case APP_TOKEN_MISSING:
+			case APP_TOKEN_UNKNOWN: 
+				throw InvalidTokenException(antwortStatus, aCode);
+			break;
+			case LIMIT_EXCEEDED:
+				throw LimitExceededException(antwortStatus, aCode);
+			break;
+			case APP_IDENTIFIER_MISSING:
+			case APP_INVALID:
+			case APP_PIRATING:
+			case DEVICE_ID_MISSING:
+			case DEVICE_NOT_FOUND:
+			case INVALID_TYPE:
+			case PUSH_INVALID_URL:
+				throw PushFailedException(antwortStatus, aCode);
+			break;	
+			default: 
+				throw UnexpectedValueException(antwortStatus, aCode);
+			};
 		}
 	}
 }
@@ -129,36 +130,7 @@ vector<PushNotifier::device> PushNotifier::getDevices()
 			}
 			else if(thisString == "code")
 			{
-				antwortStatus = input.substr(tokens[i+1].start, tokens[i+1].end-tokens[i+1].start);
-			}
-			else if(antwortStatus != "ok" && !antwortCode.empty())
-			{
-				int aCode;
-				istringstream ss(antwortCode);
-				ss >> aCode;
-
-				switch(aCode)
-				{
-				case INVALID_API_TOKEN:
-				case APP_TOKEN_MISSING:
-				case APP_TOKEN_UNKNOWN: 
-					throw InvalidTokenException(antwortStatus, aCode);
-				break;
-				case LIMIT_EXCEEDED:
-					throw LimitExceededException(antwortStatus, aCode);
-				break;
-				case APP_IDENTIFIER_MISSING:
-				case APP_INVALID:
-				case APP_PIRATING:
-				case DEVICE_ID_MISSING:
-				case DEVICE_NOT_FOUND:
-				case INVALID_TYPE:
-				case PUSH_INVALID_URL:
-					throw PushFailedException(antwortStatus, aCode);
-				break;	
-				default: 
-					throw UnexpectedValueException(antwortStatus, aCode);
-				};
+				antwortCode = input.substr(tokens[i+1].start, tokens[i+1].end-tokens[i+1].start);
 			}
 		}
 		else if(tokens[i].type ==JSMN_OBJECT)
@@ -195,6 +167,36 @@ vector<PushNotifier::device> PushNotifier::getDevices()
 				}
 			}
 			buffer.push_back(eins);
+		}
+
+		if(antwortStatus != "ok" && !antwortCode.empty())
+		{
+			int aCode;
+			istringstream ss(antwortCode);
+			ss >> aCode;
+
+			switch(aCode)
+			{
+			case INVALID_API_TOKEN:
+			case APP_TOKEN_MISSING:
+			case APP_TOKEN_UNKNOWN: 
+				throw InvalidTokenException(antwortStatus, aCode);
+			break;
+			case LIMIT_EXCEEDED:
+				throw LimitExceededException(antwortStatus, aCode);
+			break;
+			case APP_IDENTIFIER_MISSING:
+			case APP_INVALID:
+			case APP_PIRATING:
+			case DEVICE_ID_MISSING:
+			case DEVICE_NOT_FOUND:
+			case INVALID_TYPE:
+			case PUSH_INVALID_URL:
+				throw PushFailedException(antwortStatus, aCode);
+			break;	
+			default: 
+				throw UnexpectedValueException(antwortStatus, aCode);
+			};
 		}
 	}
 
@@ -243,35 +245,36 @@ bool PushNotifier::sendToDevice(string content, string type, unsigned int device
 				i++;
 				antwortCode = input.substr(tokens[i].start, tokens[i].end-tokens[i].start);
 			}
-			else if(antwortStatus != "ok" && !antwortCode.empty())
-			{
-				int aCode;
-				istringstream ss(antwortCode);
-				ss >> aCode;
+		}
 
-				switch(aCode)
-				{
-				case INVALID_API_TOKEN:
-				case APP_TOKEN_MISSING:
-				case APP_TOKEN_UNKNOWN: 
-					throw InvalidTokenException(antwortStatus, aCode);
-				break;
-				case LIMIT_EXCEEDED:
-					throw LimitExceededException(antwortStatus, aCode);
-				break;
-				case APP_IDENTIFIER_MISSING:
-				case APP_INVALID:
-				case APP_PIRATING:
-				case DEVICE_ID_MISSING:
-				case DEVICE_NOT_FOUND:
-				case INVALID_TYPE:
-				case PUSH_INVALID_URL:
-					throw PushFailedException(antwortStatus, aCode);
-				break;	
-				default: 
-					throw UnexpectedValueException(antwortStatus, aCode);
-				};
-			}
+		if(antwortStatus != "ok" && !antwortCode.empty())
+		{
+			int aCode;
+			istringstream ss(antwortCode);
+			ss >> aCode;
+
+			switch(aCode)
+			{
+			case INVALID_API_TOKEN:
+			case APP_TOKEN_MISSING:
+			case APP_TOKEN_UNKNOWN: 
+				throw InvalidTokenException(antwortStatus, aCode);
+			break;
+			case LIMIT_EXCEEDED:
+				throw LimitExceededException(antwortStatus, aCode);
+			break;
+			case APP_IDENTIFIER_MISSING:
+			case APP_INVALID:
+			case APP_PIRATING:
+			case DEVICE_ID_MISSING:
+			case DEVICE_NOT_FOUND:
+			case INVALID_TYPE:
+			case PUSH_INVALID_URL:
+				throw PushFailedException(antwortStatus, aCode);
+			break;	
+			default: 
+				throw UnexpectedValueException(antwortStatus, aCode);
+			};
 		}
 	}
 
@@ -320,35 +323,36 @@ bool PushNotifier::checkToken(string username)
 				i++;
 				antwortCode = input.substr(tokens[i].start, tokens[i].end-tokens[i].start);
 			}
-			else if(antwortStatus != "ok" && !antwortCode.empty())
+		}
+
+		if(antwortStatus != "ok" && !antwortCode.empty())
+		{
+			int aCode;
+			istringstream ss(antwortCode);
+			ss >> aCode;
+			
+			switch(aCode)
 			{
-				int aCode;
-				istringstream ss(antwortCode);
-				ss >> aCode;
-				
-				switch(aCode)
-				{
-				case INVALID_API_TOKEN:
-				case APP_TOKEN_MISSING:
-				case APP_TOKEN_UNKNOWN: 
-					throw InvalidTokenException(antwortStatus, aCode);
-				break;
-				case LIMIT_EXCEEDED:
-					throw LimitExceededException(antwortStatus, aCode);
-				break;
-				case APP_IDENTIFIER_MISSING:
-				case APP_INVALID:
-				case APP_PIRATING:
-				case DEVICE_ID_MISSING:
-				case DEVICE_NOT_FOUND:
-				case INVALID_TYPE:
-				case PUSH_INVALID_URL:
-					throw PushFailedException(antwortStatus, aCode);
-				break;	
-				default: 
-					throw UnexpectedValueException(antwortStatus, aCode);
-				};
-			}
+			case INVALID_API_TOKEN:
+			case APP_TOKEN_MISSING:
+			case APP_TOKEN_UNKNOWN: 
+				throw InvalidTokenException(antwortStatus, aCode);
+			break;
+			case LIMIT_EXCEEDED:
+				throw LimitExceededException(antwortStatus, aCode);
+			break;
+			case APP_IDENTIFIER_MISSING:
+			case APP_INVALID:
+			case APP_PIRATING:
+			case DEVICE_ID_MISSING:
+			case DEVICE_NOT_FOUND:
+			case INVALID_TYPE:
+			case PUSH_INVALID_URL:
+				throw PushFailedException(antwortStatus, aCode);
+			break;	
+			default: 
+				throw UnexpectedValueException(antwortStatus, aCode);
+			};
 		}
 	}
 
