@@ -4,9 +4,9 @@
 
 With the PushNotifier SDK you can use PushNotifier in your applications. Currently these languages are supported officially:
 
-- PHP
-- Java
-- C++
+- [PHP](https://github.com/bluefirex/PushNotifier-SDK/tree/master/PHP)
+- [Java](https://github.com/bluefirex/PushNotifier-SDK/tree/master/Java)
+- [C++](https://github.com/bluefirex/PushNotifier-SDK/tree/master/CPP)
 
 ## I don't understand anything here.
 
