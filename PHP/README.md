@@ -59,6 +59,12 @@ $devices = array(...); // Array of devices
 $pm = PushMessage::newMessage($devices, 'Example');
 $pushNotifier->sendToDevice($pm);
 ```
+
+Other types:
+```php
+$pm = PushMessage::newURL($devices, 'http://example.com');
+$pm = PushMessage::newHiddenURL($devices, 'Example', 'http://example.com');
+```
 	
 **Note that this call can throw a `PushFailedException` if the push was not successful (for at least 1 device). When an exception is thrown the execution of further pushes is halted.**
 
