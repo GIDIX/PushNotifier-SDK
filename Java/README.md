@@ -1,4 +1,4 @@
-# PushNotifier Java
+# PushNotifier Java (v1.1)
 
 ## How do I get started?
 
