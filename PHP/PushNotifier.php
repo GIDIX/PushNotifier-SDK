@@ -4,7 +4,7 @@
 	/**
 	 *	PushNotifier API class
 	 *	@author 	GIDIX
-	 *	@version 	1.0
+	 *	@version 	1.1
 	 *	@since 		January 27, 2014
 	 *	@copyright	2014 GIDIX
 	 */

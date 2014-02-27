@@ -1,10 +1,12 @@
-# PushNotifier PHP
+# PushNotifier PHP (v1.1)
 
 ## How do I get started?
 
 1. Copy the folder into your project.
 2. Include `PushNotifier.php` and `Device.php`.
-3. At the top of your project write: `use \GX\PushNotifier\PushNotifier;`.
+3. At the top of your project write:
+	- `use \GX\PushNotifier\PushNotifier;`
+	- `use \GX\PushNotifier\PushMessage;`
 4. Modify `API_TOKEN` and `APP_PACKAGE` in `PushNotifier.php`.
 5. You're ready to go.
 
@@ -54,7 +56,8 @@ Finally the fun part - pushing content to a user's device/s:
 
 ```php
 $devices = array(...); // Array of devices
-$pushNotifier->sendToDevice('Example of a push notification.', PushNotifier::TYPE_MESSAGE, $devices);
+$pm = PushMessage::newMessage($devices, 'Example');
+$pushNotifier->sendToDevice($pm);
 ```
 	
 **Note that this call can throw a `PushFailedException` if the push was not successful (for at least 1 device). When an exception is thrown the execution of further pushes is halted.**
