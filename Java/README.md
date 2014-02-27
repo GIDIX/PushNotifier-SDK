@@ -8,6 +8,9 @@
 4. Import these packages:
 	- com.gidix.pushNotifier.*
 	- com.gidix.pushNotifier.exceptions.*
+5. Add to your project these lines:
+	- `PushNotifier.setAPIToken("your_api_token_here");`
+	- `PushNotifier.setAppPackage("com.example.app");`
 
 ## Notes
 
@@ -49,7 +52,8 @@ Finally the fun part - pushing content to a user's device/s:
 
 ```java
 Device[] devices = new Device[] { ... };
-pn.sendToDevice("Example", PushNotifier.TYPE_MESSAGE, devices);
+PushMessage pm = PushMessage.newMessage(devices, "Example");
+pn.sendToDevice(pm);
 ```
 	
 ## Tracing errors
