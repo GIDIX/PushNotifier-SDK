@@ -11,6 +11,7 @@
 	class PushNotifier {
 		const TYPE_MESSAGE = "MESSAGE";
 		const TYPE_URL = "URL";
+		const TYPE_HIDDENURL = "HIDDENURL";
 
 		const API_TOKEN = "YOUR_API_TOKEN";
 		const APP_PACKAGE = "YOUR_APP_PACKAGE";
@@ -110,29 +111,24 @@
 		/**
 		 *	Push something to one or more devices.
 		 *
-		 *	@param 		string 	content
-		 *	@param 		string 	type (use PushNotifier::TYPE_-constants)
-		 *	@param 		array 	devices
-		 *
-		 *	@return 	boolean	TRUE
+		 *	@param 		PushMessage	$m
 		 */
-		public function sendToDevice($content, $type, array $devices) {
-			foreach ($devices as $d) {
+		public function sendToDevice(PushMessage $m) {
+			foreach ($m->getDevices() as $d) {
 				$json = $this->call(self::URL_SEND_TO_DEVICE, array(
 					'apiToken'	=>	self::API_TOKEN,
 					'appToken'	=>	$this->token,
 					'app'		=>	self::APP_PACKAGE,
 					'deviceID'	=>	$d instanceof Device ? $d->getID() : (int) $d,
-					'type'		=>	$type,
-					'content'	=>	$content
+					'type'		=>	$m->getType(),
+					'content'	=>	$m->getContent(),
+					'hiddenURL'	=>	$m->getHiddenURL()
 				));
 
 				if ($json['status'] != 'ok') {
 					throw new PushFailedException($json['status'], $json['code']);
 				}
 			}
-
-			return true;
 		}
 
 		/**
