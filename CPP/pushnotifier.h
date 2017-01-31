@@ -1,5 +1,5 @@
 #ifndef PUSHNOTIFIER_H
-#define PUSHNOTIFiER_H
+#define PUSHNOTIFIER_H
 
 #include <string>
 #include <vector>

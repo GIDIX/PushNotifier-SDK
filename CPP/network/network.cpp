@@ -73,7 +73,7 @@ string Network::receive()
 
 	while(true)
 	{
-		iReadBytes = recv(sock, buffer, sizeof(buffer), MSG_NOSIGNAL);
+		iReadBytes = recv(sock, buffer, sizeof(buffer), 0);
 
 		if(!iReadBytes > 0)
 		{
