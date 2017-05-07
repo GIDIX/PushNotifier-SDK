@@ -1,4 +1,4 @@
-all: pushnotifier.a 
+all: pushnotifier.a example 
 	
 pushnotifier.a: pushnotifier.o
 	cd network; make
@@ -15,6 +15,6 @@ clear:
 	cd exception; make clear
 	rm -f *.a
 	rm -f *.o
-
+	rm example
 example:
 	g++ -o example example.cpp pushnotifier.a
